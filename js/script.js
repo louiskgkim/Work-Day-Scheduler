@@ -72,5 +72,6 @@ renderLastRegistered();
 updateTime();
 setInterval(updateTime, 1000);
 
-
+// add function to save schedule in local storage
+// add function for the 'clicks'
 
