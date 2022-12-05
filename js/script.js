@@ -6,7 +6,7 @@ function updateTime() {
   $('#currentDay').text(today.format('dddd, MMMM Do YYYY, h:mm.ss'));
 
   // Color past, present and future time blocks
-  let now = moment().format('kk');
+  let now = moment().format('dddd, MMMM Do YYYY, h:mm.ss');
       for (let i = 0; i < scheduleElArray.length; i++) {
           scheduleElArray[i].removeClass('future past present');
           if (now > scheduleElArray[i].data('hour')) {
@@ -19,7 +19,7 @@ function updateTime() {
 }
 
 // Elements for the text area
-let saveBttn = $('.save-icon');
+let saveBtn = $('.save-icon');
 let containerEl = $('.container');
 let schedule9am = $('#9AM');
 let schedule10am = $('#10AM');
@@ -49,18 +49,24 @@ updateTime();
 setInterval(updateTime, 1000);
 
 // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-
+  // the values of the corresponding textarea elements.
 function renderLastRegistered() {
   for (let el of scheduleElArray) {
     el.val(localStorage.getItem('time block ' + el.data('hour')));
   }
 }
 
-// add function to save schedule in local storage
-// add function for the 'clicks'
+// added function for the 'clicks'
+function handleFormSubmit(event) {
+  event.preventDefault();
 
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
+   let btnClicked = $(event.currentTarget);
+
+   let targetText = btnClicked.siblings('textarea');
+
+   let targetTimeBlock = targetText.data('hour');
+
+   localStorage.setItem('time block ' + targetTimeBlock, targetText.val());
+}
+
+saveBtn.on('click', handleFormSubmit);
