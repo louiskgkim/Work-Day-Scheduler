@@ -22,6 +22,8 @@ textarea {
 
 .row {
   border-top: 1px solid white;
+  white-space: pre-wrap;
+  height: 80px;
 }
 
 .hour {
@@ -49,11 +51,27 @@ textarea {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06aed5;
+  background-color: #04b0d7;
   color: white;
 }
 
 .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
+}
+
+.save-container {
+  background-color: rgb(86, 216, 233);
+}
+
+.fa-save {
+  font-size: 1.8rem;
+}
+
+.jumbotron {
+  color: black;
+  background-color: transparent;
+  text-align: center;
+  border-radius: 0;
+  border-bottom: 10px solid black;
 }
