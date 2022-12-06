@@ -1,12 +1,12 @@
 // Function to update the time on the webpage
 function updateTime() {
-  var today = moment();
+  var today = dayjs();
 
   // Update the time in the header based on today's date
-  $('#currentDay').text(today.format('dddd, MMMM Do YYYY, h:mm.ss'));
+  $('#currentDay').text(today.format('dddd, MMMM DD YYYY, h:mm.ss'));
 
   // Color past, present and future time blocks
-  var now = moment().format('dddd, MMMM Do YYYY, h:mm.ss');
+  var now = dayjs().format('dddd, MMMM DD YYYY, h:mm.ss');
       for (var i = 0; i < scheduleElArray.length; i++) {
           scheduleElArray[i].removeClass('future past present');
           if (now > scheduleElArray[i].data('hour')) {
