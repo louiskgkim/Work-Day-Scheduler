@@ -19,7 +19,7 @@ function updateTime() {
 }
 
 // Elements for the text area
-let saveBtn = $('.save-icon');
+let saveBtn = $('.save-btn');
 let containerEl = $('.container');
 let schedule9am = $('#9AM');
 let schedule10am = $('#10AM');
@@ -62,6 +62,8 @@ function handleFormSubmit(event) {
 
    let btnClicked = $(event.currentTarget);
 
+  //  https://www.w3schools.com/jquery/traversing_siblings.asp 
+  // regarding sibling method was found here
    let targetText = btnClicked.siblings('textarea');
 
    let targetTimeBlock = targetText.data('hour');
