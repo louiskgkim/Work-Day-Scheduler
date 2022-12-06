@@ -1,13 +1,13 @@
 // Function to update the time on the webpage
 function updateTime() {
-  let today = moment();
+  var today = moment();
 
   // Update the time in the header based on today's date
   $('#currentDay').text(today.format('dddd, MMMM Do YYYY, h:mm.ss'));
 
   // Color past, present and future time blocks
-  let now = moment().format('dddd, MMMM Do YYYY, h:mm.ss');
-      for (let i = 0; i < scheduleElArray.length; i++) {
+  var now = moment().format('dddd, MMMM Do YYYY, h:mm.ss');
+      for (var i = 0; i < scheduleElArray.length; i++) {
           scheduleElArray[i].removeClass('future past present');
           if (now > scheduleElArray[i].data('hour')) {
               scheduleElArray[i].addClass('past');
@@ -19,20 +19,20 @@ function updateTime() {
 }
 
 // Elements for the text area
-let saveBtn = $('.save-btn');
-let containerEl = $('.container');
-let schedule9am = $('#9AM');
-let schedule10am = $('#10AM');
-let schedule11am = $('#11AM');
-let schedule12pm = $('#12PM');
-let schedule1pm = $('#1PM');
-let schedule2pm = $('#2PM');
-let schedule3pm = $('#3PM');
-let schedule4pm = $('#4PM');
-let schedule5pm = $('#5PM');
+var saveBtn = $('.save-btn');
+var containerEl = $('.container');
+var schedule9am = $('#9AM');
+var schedule10am = $('#10AM');
+var schedule11am = $('#11AM');
+var schedule12pm = $('#12PM');
+var schedule1pm = $('#1PM');
+var schedule2pm = $('#2PM');
+var schedule3pm = $('#3PM');
+var schedule4pm = $('#4PM');
+var schedule5pm = $('#5PM');
 
 // Array for all time elements in the text area
-let scheduleElArray = [
+var scheduleElArray = [
     schedule9am,
     schedule10am,
     schedule11am,
@@ -51,7 +51,7 @@ setInterval(updateTime, 1000);
 // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements.
 function renderLastRegistered() {
-  for (let el of scheduleElArray) {
+  for (var el of scheduleElArray) {
     el.val(localStorage.getItem('time block ' + el.data('hour')));
   }
 }
@@ -60,13 +60,13 @@ function renderLastRegistered() {
 function handleFormSubmit(event) {
   event.preventDefault();
 
-   let btnClicked = $(event.currentTarget);
+   var btnClicked = $(event.currentTarget);
 
   //  https://www.w3schools.com/jquery/traversing_siblings.asp 
   // regarding sibling method was found here
-   let targetText = btnClicked.siblings('textarea');
+   var targetText = btnClicked.siblings('textarea');
 
-   let targetTimeBlock = targetText.data('hour');
+   var targetTimeBlock = targetText.data('hour');
 
    localStorage.setItem('time block ' + targetTimeBlock, targetText.val());
 }
