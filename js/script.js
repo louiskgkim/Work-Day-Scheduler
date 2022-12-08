@@ -6,6 +6,7 @@ function updateTime() {
   $('#currentDay').text(today.format('dddd, MMMM DD YYYY, h:mm.ss'));
 
   // Color past, present and future time blocks
+  // Can't seem to get these to display the colors based on the time
   var now = dayjs().format('dddd, MMMM DD YYYY, h:mm.ss');
       for (var i = 0; i < scheduleElArray.length; i++) {
           scheduleElArray[i].removeClass('future past present');
